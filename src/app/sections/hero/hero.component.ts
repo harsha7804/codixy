@@ -38,14 +38,14 @@ import { ScrollService } from '../../core/services/scroll.service';
       <div class="section-container relative z-10 w-full mt-[calc(6.5rem+env(safe-area-inset-top))] md:mt-32 mb-16 md:mb-20">
         <div class="max-w-5xl">
           <!-- Main Heading -->
-          <h1 #heroHeading class="opacity-0 font-clash text-[2.6rem] sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] md:leading-[1.0] mb-5 md:mb-8 tracking-tight">
+          <h1 #heroHeading class="opacity-0 font-clash text-[2.25rem] sm:text-5xl md:text-6xl lg:text-[4rem] font-semibold leading-[1.12] mb-5 md:mb-7 tracking-[-0.01em]">
             <span class="block text-white">Transforming</span>
             <span class="block gradient-text text-glow-cyan">Digital Innovation</span>
             <span class="block text-white">Into Reality</span>
           </h1>
 
           <!-- Description -->
-          <p #heroDesc class="opacity-0 text-slate-400 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed mb-8 md:mb-10 font-outfit">
+          <p #heroDesc class="opacity-0 text-slate-400 text-base md:text-lg max-w-2xl leading-relaxed mb-8 md:mb-10 font-outfit">
             CODIXY Technologies delivers AI-powered enterprise software, intelligent automation, and
             next-generation digital platforms that accelerate business growth.
           </p>
