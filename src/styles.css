@@ -95,14 +95,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-card-hover {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              translate 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card-hover:hover {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(6, 182, 212, 0.3);
   box-shadow: 0 0 30px rgba(6, 182, 212, 0.15), 0 20px 60px rgba(0, 0, 0, 0.4);
-  transform: translateY(-4px);
+  translate: 0 -4px; /* independent of GSAP's inline transform */
+}
+
+/* Touch devices: no sticky hover lift */
+@media (hover: none) {
+  .glass-card-hover:hover { translate: none; }
 }
 
 /* ========================================
@@ -185,12 +193,12 @@ h1, h2, h3, h4, h5, h6 {
 ======================================== */
 .section-container {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px;
+  margin-inline: auto;
+  padding-inline: 24px;
 }
 
-@media (min-width: 768px) { .section-container { padding: 0 48px; } }
-@media (min-width: 1280px) { .section-container { padding: 0 80px; } }
+@media (min-width: 768px) { .section-container { padding-inline: 48px; } }
+@media (min-width: 1280px) { .section-container { padding-inline: 80px; } }
 
 .section-tag {
   display: inline-flex;
@@ -379,9 +387,21 @@ h1, h2, h3, h4, h5, h6 {
    FLOAT ANIMATIONS
 ======================================== */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -20px, 0); }
 }
 
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-float-delay { animation: float 6s ease-in-out 2s infinite; }
+
+/* Promote animated / heavily blurred layers to their own GPU layer
+   so they are rasterized once instead of repainted every scroll frame. */
+.gpu-layer {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-float-delay { animation: none; }
+}

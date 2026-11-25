@@ -74,7 +74,7 @@ interface ChatMessage { role: 'user' | 'bot'; text: string; }
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/916300358759" target="_blank"
-      class="fixed bottom-24 right-6 z-[9999] w-14 h-14 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 hover:scale-110 group"
+      class="fixed bottom-[calc(5rem+env(safe-area-inset-bottom))] right-4 md:bottom-24 md:right-6 z-[9999] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 hover:scale-110 group"
       style="background:#25D366; box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);"
       aria-label="Contact on WhatsApp">
       <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@ interface ChatMessage { role: 'user' | 'bot'; text: string; }
 
     <!-- Toggle Button -->
     <button
-      class="fixed bottom-6 right-6 z-[9999] w-14 h-14 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 hover:scale-110 group"
+      class="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-4 md:bottom-6 md:right-6 z-[9999] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-white shadow-2xl transition-all duration-300 hover:scale-110 group"
       style="background:linear-gradient(135deg,#06b6d4,#7c3aed);box-shadow:0 0 30px rgba(6,182,212,0.4);"
       (click)="toggle()" aria-label="Toggle AI Chatbot">
       <svg *ngIf="!isOpen" class="w-6 h-6 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">

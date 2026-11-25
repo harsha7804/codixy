@@ -51,7 +51,7 @@ gsap.registerPlugin(ScrollTrigger);
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
               </div>
-              <h3 #missionTitle class="text-2xl font-bold text-white font-grotesk opacity-0 transform translate-y-4 transition-all duration-700 group-hover:opacity-100 group-hover:translate-y-0">Our Mission</h3>
+              <h3 #missionTitle class="text-2xl font-bold text-white font-grotesk opacity-0 translate-y-4">Our Mission</h3>
             </div>
             <p class="text-slate-400 leading-relaxed font-outfit relative z-10">
               To empower businesses through innovative technology solutions, intelligent automation, and
@@ -77,7 +77,7 @@ gsap.registerPlugin(ScrollTrigger);
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                 </svg>
               </div>
-              <h3 #visionTitle class="text-2xl font-bold text-white font-grotesk opacity-0 transform translate-y-4 transition-all duration-700 group-hover:opacity-100 group-hover:translate-y-0">Our Vision</h3>
+              <h3 #visionTitle class="text-2xl font-bold text-white font-grotesk opacity-0 translate-y-4">Our Vision</h3>
             </div>
             <p class="text-slate-400 leading-relaxed font-outfit relative z-10">
               To become a globally recognized technology company known for innovation, futuristic digital
@@ -92,9 +92,9 @@ gsap.registerPlugin(ScrollTrigger);
         <!-- Core Values -->
         <div #valuesSection>
           <h3 class="text-center text-2xl font-bold text-white mb-12 font-grotesk">Core Values</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" #valuesGrid>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6" #valuesGrid>
             <div *ngFor="let value of coreValues; let i = index"
-              class="glass-card glass-card-hover p-6 text-center group cursor-default value-card relative overflow-hidden">
+              class="glass-card glass-card-hover p-4 sm:p-6 text-center group cursor-default value-card relative overflow-hidden">
               <!-- Animated panning gradient background -->
               <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                    [style.background]="'linear-gradient(120deg, ' + value.colorA + ' 0%, transparent 50%, ' + value.colorB + ' 100%)'"
@@ -104,13 +104,13 @@ gsap.registerPlugin(ScrollTrigger);
               <div class="absolute top-0 left-0 right-0 h-24 opacity-10 pointer-events-none flex justify-center items-end" [innerHTML]="value.bgIllustration | safeHtml"></div>
 
               <!-- Icon -->
-              <div class="relative z-10 w-16 h-16 rounded-2xl mx-auto mb-5 flex items-center justify-center transition-all duration-400"
+              <div class="relative z-10 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl mx-auto mb-3 sm:mb-5 flex items-center justify-center transition-all duration-400"
                 [style.background]="'linear-gradient(135deg, ' + value.colorA + ', ' + value.colorB + ')'"
                 [style.border]="'1px solid ' + value.borderColor">
                 <span [innerHTML]="value.icon | safeHtml" class="transition-transform duration-400 group-hover:scale-110"></span>
               </div>
-              <h4 class="relative z-10 text-white font-semibold text-lg mb-3 font-grotesk">{{value.title}}</h4>
-              <p class="relative z-10 text-slate-400 text-sm leading-relaxed font-outfit">{{value.description}}</p>
+              <h4 class="relative z-10 text-white font-semibold text-base sm:text-lg mb-2 sm:mb-3 font-grotesk">{{value.title}}</h4>
+              <p class="relative z-10 text-slate-400 text-xs sm:text-sm leading-relaxed font-outfit">{{value.description}}</p>
             </div>
           </div>
         </div>

@@ -4,32 +4,38 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// CSS 'transition: all' on an element fights GSAP tweens of the same
+// properties (opacity/transform) and causes stutter. Disable CSS transitions
+// for the duration of the reveal, then restore them.
+const NO_CSS_TRANSITION = { transition: 'none' };
+const restoreTransition = (targets: any) => () => gsap.set(targets, { clearProps: 'transition' });
+
 @Injectable({ providedIn: 'root' })
 export class AnimationService {
 
   revealSection(el: Element, options: any = {}): void {
-    gsap.fromTo(el, { opacity: 0, y: 60 }, {
+    gsap.fromTo(el, { opacity: 0, y: 60, ...NO_CSS_TRANSITION }, { onComplete: restoreTransition(el),
       opacity: 1, y: 0, duration: options.duration || 1, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 85%', once: true },
     });
   }
 
   revealLeft(el: Element, options: any = {}): void {
-    gsap.fromTo(el, { opacity: 0, x: -80 }, {
+    gsap.fromTo(el, { opacity: 0, x: -80, ...NO_CSS_TRANSITION }, { onComplete: restoreTransition(el),
       opacity: 1, x: 0, duration: 1.2, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 80%', once: true },
     });
   }
 
   revealRight(el: Element, options: any = {}): void {
-    gsap.fromTo(el, { opacity: 0, x: 80 }, {
+    gsap.fromTo(el, { opacity: 0, x: 80, ...NO_CSS_TRANSITION }, { onComplete: restoreTransition(el),
       opacity: 1, x: 0, duration: 1.2, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 80%', once: true },
     });
   }
 
   revealScale(el: Element, options: any = {}): void {
-    gsap.fromTo(el, { opacity: 0, scale: 0.85 }, {
+    gsap.fromTo(el, { opacity: 0, scale: 0.85, ...NO_CSS_TRANSITION }, { onComplete: restoreTransition(el),
       opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)',
       scrollTrigger: { trigger: el, start: 'top 85%', once: true },
     });
@@ -63,7 +69,7 @@ export class AnimationService {
 
   staggerReveal(containerEl: Element, childSelector: string, options: any = {}): void {
     const children = containerEl.querySelectorAll(childSelector);
-    gsap.fromTo(children, { opacity: 0, y: 50 }, {
+    gsap.fromTo(children, { opacity: 0, y: 50, ...NO_CSS_TRANSITION }, { onComplete: restoreTransition(children),
       opacity: 1, y: 0, duration: options.duration || 0.8, stagger: options.stagger || 0.12,
       ease: 'power3.out',
       scrollTrigger: { trigger: containerEl, start: 'top 80%', once: true },

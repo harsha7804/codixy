@@ -16,9 +16,9 @@ import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
 
       <div class="section-container relative z-10 pt-16 md:pt-24 pb-8 md:pb-12">
         <!-- Main Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 lg:gap-16 mb-12 md:mb-16">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 md:gap-12 lg:gap-16 mb-12 md:mb-16">
           <!-- Brand -->
-          <div class="lg:col-span-1">
+          <div class="col-span-2 lg:col-span-1">
             <img src="assets/logo/codixy-logo.jpg" alt="CODIXY Technologies" class="h-10 w-auto mb-6"
               style="filter:drop-shadow(0 0 8px rgba(6,182,212,0.5));">
             <p class="text-slate-400 text-sm leading-relaxed font-outfit mb-6">
@@ -62,7 +62,7 @@ import { SafeHtmlPipe } from '../../pipes/safe-html.pipe';
           </div>
 
           <!-- Contact -->
-          <div>
+          <div class="col-span-2 lg:col-span-1">
             <h4 class="text-white font-semibold text-sm uppercase tracking-widest mb-6 font-grotesk">Contact</h4>
             <ul class="space-y-4">
               <li class="flex items-start gap-3">
